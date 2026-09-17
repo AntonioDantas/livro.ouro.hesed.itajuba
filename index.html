@@ -46,6 +46,10 @@
         window.qtdFaltante = 800 - people.length;
         var numeroDePaginas = Math.ceil(newListPeople.length / itensPorPagina);
         
+        // Garante que o número total de páginas seja par (para ter a contracapa)
+        var totalPages = 7 + numeroDePaginas;
+        var needsExtraPage = (totalPages % 2 !== 0);
+        
         window.generatedDeeplinks = '';
         window.generatedPages = '';
         
@@ -100,6 +104,23 @@
                 '<!-- end page ' + pageNum + ' -->\n';
             
             window.generatedDeeplinks += '<li data-address="page' + pageNum + '" data-page="' + pageNum + '"><\/li>\n';
+        }
+        
+        if (needsExtraPage) {
+            var extraPageNum = 7 + numeroDePaginas + 1;
+            window.generatedPages += 
+                '<!-- begin page ' + extraPageNum + ' -->' +
+                '<div data-background-image="img/nomes.jpg">' +
+                    '<div class="nomes"><\/div>' +
+                    '<div class="fb5-cont-page-book">' +
+                        '<div class="fb5-gradient-page"><\/div>' +
+                        '<canvas id="canv' + extraPageNum + '"><\/canvas>' +
+                        '<div class="fb5-page-book"><\/div>' +
+                    '<\/div>' +
+                '<\/div>' +
+                '<!-- end page ' + extraPageNum + ' -->\n';
+            
+            window.generatedDeeplinks += '<li data-address="page' + extraPageNum + '" data-page="' + extraPageNum + '"><\/li>\n';
         }
     })();
     </script>
