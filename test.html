@@ -1,0 +1,29 @@
+<script>
+        var people = [
+            {"Id":"b4b04cf0-a2ae-47f0-be87-885b310ef972","Number":1,"Name":"Fred P.Z/ Itajub\u00e1-MG"},
+            {"Id":"5602f207-9a81-403c-a39e-3da95eff41e5","Number":2,"Name":"Helena F. S  / Guar\u00e1 - SP"},
+            {"Id":"ca67480d-7895-4d8c-8159-aab317d31cff","Number":3,"Name":"\u00d3tica S.Vicente Itajub\u00e1  - MG"},
+            {"Id":"7db97a53-c1e3-4971-96f4-7cd88c928ac1","Number":4,"Name":"Mauric\u00e9ia Fonseca Itajub\u00e1 MG\r\nPedro Barbosa/ Itajub\u00e1 \r\nFabiane Rocha / Itajub\u00e1- MG"},
+            {"Id":"43310b3d-77b4-4b61-94be-a14ffdc26b94","Number":5,"Name":"Maria Aparecida Vieira Silva/ Itajub\u00e1 MG \r\n "},
+            {"Id":"6a0ce8bd-3be3-4500-bb13-df727b2fc97f","Number":6,"Name":"1- Paulo da Silva Ferreira "},
+            {"Id":"565f1b4b-2085-4182-bd3c-0b9b1334f680","Number":7,"Name":"M Aparecida Fonseca Silva / Itajub\u00e1 -MG"},
+            {"Id":"c33ac4c1-dbd9-49c4-8d16-4f3d7d4b67bb","Number":8,"Name":"Maria Fonseca Ara\u00fajo \r\nPatr\u00edcia Oliveira Pereira\r\nFrancisca de Paula Zucarere/ Guar\u00e1 _SP"},
+            {"Id":"08423bf2-7877-49ac-a2e0-30735a2031d2","Number":9,"Name":"Maria Augusta O. Dias/ Itajub\u00e1 - MG"},
+            {"Id":"6f8ba2a8-cc5b-4455-86c2-7e14acbcf56d","Number":10,"Name":"Pedro F. Ramos Oliveira/ Lorena- SP"},
+            {"Id":"9e8585e4-779c-43d7-871c-e6f7b3dab041","Number":11,"Name":"Pascoal Alexandre V Braga / BH- MG\r\nSandra Bernadino Pereira/ BH- MG\r\nAparecido Fonseca Santos/ BH- MG"}
+        ];
+        
+        people.sort(function(a, b) { return a.Number - b.Number; });
+        var itensPorPagina = 15;
+        var newListPeople = [];
+        for (var pi = 0; pi < people.length; pi++) {
+            var p = people[pi];
+            var names = p.Name.split('\n');
+            for (var ni = 0; ni < names.length; ni++) {
+                newListPeople.push({ Id: p.Id, Number: p.Number, Name: names[ni].replace(/\r/g, '') });
+            }
+        }
+        
+        var numeroDePaginas = Math.ceil(newListPeople.length / itensPorPagina);
+        console.log(numeroDePaginas);
+</script>
